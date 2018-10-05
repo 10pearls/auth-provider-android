@@ -37,7 +37,7 @@ Credentials credentials = new Credentials(username, password);
 
 Perform authentication:
 ```java
-authenticationFeature.login(credentials, new Authentication.AuthenticationListener() {
+authenticationFeature.login(credentials, new Authentication.Listener() {
     @Override
     public void onLoginSuccessful(User user) {
         //Logged in successfully
@@ -68,7 +68,7 @@ Initiate registration:
 
 ```java
 //credentials object can be prepared in a similar way as shown in authentication
-registrationFeature.register(credentials, attributes, new Registration.RegistrationListener() {
+registrationFeature.register(credentials, attributes, new Registration.Listener() {
     @Override
     public void onSignUpSuccessful() {
       //Sign up successful
