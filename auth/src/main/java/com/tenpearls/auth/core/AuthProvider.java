@@ -22,7 +22,7 @@ public class AuthProvider {
     //Features
     private Registration registration;
     private Authentication auth;
-    private ForgotPassword forgotPassword;
+    private PasswordReset passwordReset;
     private InfoUpdate infoUpdate;
 
     private AuthProvider(Context context, String userPoolId, String clientId, String clientSecret, Regions region) {
@@ -88,16 +88,16 @@ public class AuthProvider {
 
 
     /**
-     * Returns an instance of {@link ForgotPassword} feature.
+     * Returns an instance of {@link PasswordReset} feature.
      * Instance of the feature is created only once and the same instance
      * is returned afterwards to share the data between requests.
-     * @return instance of {@link ForgotPassword} feature.
+     * @return instance of {@link PasswordReset} feature.
      */
-    public ForgotPassword getForgotPasswordFeature(){
-        if (forgotPassword == null)
-            forgotPassword = new ForgotPassword(userPool);
+    public PasswordReset getPasswordResetFeature(){
+        if (passwordReset == null)
+            passwordReset = new PasswordReset(userPool);
 
-        return forgotPassword;
+        return passwordReset;
     }
 
 

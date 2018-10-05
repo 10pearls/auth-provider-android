@@ -6,13 +6,13 @@ import com.amazonaws.mobileconnectors.cognitoidentityprovider.continuations.Forg
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.handlers.ForgotPasswordHandler;
 
 /**
- * ForgotPassword feature provides ability to reset password of the user.
+ * PasswordReset feature provides ability to reset password of the user.
  */
-public class ForgotPassword extends Feature {
+public class PasswordReset extends Feature {
 
     private ForgotPasswordContinuation continuation;
 
-    ForgotPassword(CognitoUserPool userPool) {
+    PasswordReset(CognitoUserPool userPool) {
         super(userPool);
     }
 
@@ -31,7 +31,7 @@ public class ForgotPassword extends Feature {
 
             @Override
             public void getResetCode(ForgotPasswordContinuation continuation) {
-                ForgotPassword.this.continuation = continuation;
+                PasswordReset.this.continuation = continuation;
                 CognitoUserCodeDeliveryDetails parameters = continuation.getParameters();
                 String deliveryMedium = parameters.getDeliveryMedium();
                 String destination = parameters.getDestination();
