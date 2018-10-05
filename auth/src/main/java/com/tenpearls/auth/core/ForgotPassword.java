@@ -21,7 +21,7 @@ public class ForgotPassword extends Feature {
      * @param username Username of the user to reset password.
      * @param listener Listener to listen the events of password reset events.
      */
-    public void resetPassword(String username, final ForgotPasswordListener listener) {
+    public void resetPassword(String username, final Listener listener) {
         userPool.getUser(username).forgotPasswordInBackground(new ForgotPasswordHandler() {
 
             @Override
@@ -65,7 +65,7 @@ public class ForgotPassword extends Feature {
     /**
      * Listener interface to listen to failed and successful password changed events. It also notifies of the verification code sent events.
      */
-    public interface ForgotPasswordListener {
+    public interface Listener {
 
         /**
          * This method gets called as soon as password is successfully changed.

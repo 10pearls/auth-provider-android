@@ -27,11 +27,11 @@ public class Authentication extends Feature {
 
     /**
      * Call to methods attempts to authenticate the user through provided credentials.
-     * It also fetches the details of the user after authenticating and provides the complete user instance in {@link AuthenticationListener#onLoginSuccessful(User)} event.
+     * It also fetches the details of the user after authenticating and provides the complete user instance in {@link Listener#onLoginSuccessful(User)} event.
      * @param credentials Credentials of the user to log in.
      * @param listener to listen events of successful and failed login events.
      */
-    public void login(final Credentials credentials, final AuthenticationListener listener){
+    public void login(final Credentials credentials, final Listener listener){
 
         userPool.getUser(credentials.getUsername()).getSessionInBackground(new AuthenticationHandler() {
             @Override
@@ -95,9 +95,9 @@ public class Authentication extends Feature {
     }
 
     /**
-     * Listener interface to listen to failed and successful login events.
+     * Listener interface to listen to failed and successful authentication events.
      */
-    public interface AuthenticationListener {
+    public interface Listener {
         /**
          * This method gets called whenever call to login method gets successful.
          * @param user User instance that has just been logged in.

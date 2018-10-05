@@ -22,7 +22,7 @@ import java.util.Map;
 public class Registration extends Feature {
 
     private CognitoUser cognitoUser;
-    private RegistrationListener registrationListener;
+    private Listener registrationListener;
 
     private String username;
 
@@ -36,7 +36,7 @@ public class Registration extends Feature {
      * @param attributes Attributes of the user
      * @param registrationListener Listener to notify events regarding registration status
      */
-    public void register(Credentials credentials, User.Attributes attributes, RegistrationListener registrationListener) {
+    public void register(Credentials credentials, User.Attributes attributes, Listener registrationListener) {
         this.registrationListener = registrationListener;
         CognitoUserAttributes userAttributes = attributes.toCognitoAttributes();
 
@@ -98,7 +98,7 @@ public class Registration extends Feature {
      * @param confirmationCode verification code provided through email/sms.
      * @param listener listener to listen to confirmation events.
      */
-    public void confirmRegistration(String username, String confirmationCode, RegistrationListener listener) {
+    public void confirmRegistration(String username, String confirmationCode, Listener listener) {
         this.username = username;
         this.registrationListener = listener;
 
@@ -132,7 +132,7 @@ public class Registration extends Feature {
      * @param username Username of the user for which confirmation code needs to be re-sent.
      * @param listener listener to listen to re-sent events.
      */
-    public void resendConfirmationCode(String username, @Nullable RegistrationListener listener) {
+    public void resendConfirmationCode(String username, @Nullable Listener listener) {
         this.username = username;
 
         if (listener != null) this.registrationListener = listener;
@@ -159,7 +159,7 @@ public class Registration extends Feature {
     /**
      * Listener interface to listen to registration events. It also notifies of user confirmation events.
      */
-    public abstract static class RegistrationListener {
+    public abstract static class Listener {
         /**
          * This method notifies about the event when sign up gets successful after user confirmation.
          */

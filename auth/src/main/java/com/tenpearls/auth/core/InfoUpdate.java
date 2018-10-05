@@ -18,7 +18,7 @@ public class InfoUpdate extends Feature {
      * Call to this method will update the information of currently signed in user.
      * @param listener Listener to listen the events of password reset events.
      */
-    public void refreshCurrentUser(final UpdateUserListener listener){
+    public void refreshCurrentUser(final Listener listener){
         userPool.getCurrentUser().getDetailsInBackground(new GetDetailsHandler() {
             @Override
             public void onSuccess(CognitoUserDetails cognitoUserDetails) {
@@ -39,7 +39,7 @@ public class InfoUpdate extends Feature {
     /**
      * Listener interface to listen to failed and successful user info update events.
      */
-    public interface UpdateUserListener {
+    public interface Listener {
 
         /**
          * This method gets called when info of the user has successfully been updated.
